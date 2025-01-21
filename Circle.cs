@@ -1,12 +1,9 @@
-class Circle : IShape
+class Circle : Shape
 {
-    int Radius { get; }
-    public Circle(int radius)
+    double Radius { get; }
+    public Circle(double radius)
     {
         this.Radius = radius;
     }
-    public double CalculateArea()
-    {
-        return Math.PI * Math.Pow(Radius, 2);
-    }
+    public override double CalculateArea() => Math.PI * Math.Pow(Radius, 2);
 }
