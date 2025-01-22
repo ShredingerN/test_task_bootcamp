@@ -1,5 +1,4 @@
 
-
 class Triangle : Shape
 {
     double SideA { get; }
@@ -15,15 +14,19 @@ class Triangle : Shape
     public override double CalculateArea()
 
     {
-        double semiPerimeter = (SideA + SideB + SideC) / 2;
-        return semiPerimeter * (semiPerimeter - SideA) * (semiPerimeter - SideB) * (semiPerimeter - SideC);
+        if (IsValidTriangle(SideA, SideB, SideC))
+        {
+            double p = (SideA + SideB + SideC) / 2;
+            return Math.Sqrt(p * (p - SideA) * (p - SideB) * (p - SideC));
+        }
+        return double.NaN;
     }
 
-    public bool RightTriangle()
+    private bool IsValidTriangle(double sideA, double sideB, double sideC)
     {
-        List<double> sides = new List<double> { SideA, SideB, SideC };
-        sides.Sort();
-        return Math.Pow(sides[2], 2) == Math.Pow(sides[0], 2) + Math.Pow(sides[1], 2);
-    
+        return sideA + sideB > sideC &&
+               sideA + sideC > sideB &&
+               sideB + sideC > sideA;
+
     }
 }

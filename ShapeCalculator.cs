@@ -1,6 +1,6 @@
-public class ShapeCalculator
+public static class ShapeCalculator
 {
-    public double CalculateArea(IShape shape)
+    public static double CalculateArea(IShape shape)
     {
         return shape.CalculateArea();
     }
